@@ -55,7 +55,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
     // Future.delayed(Duration(seconds: 1), () {
     //   if(mounted) setState(() => showFullSlider = true);
     // });
-    Future.delayed(Duration(milliseconds: 2500), () {
+    Future.delayed(Duration(milliseconds: 5500), () {
       if(mounted) _startBounceLoop();
     });
   }
