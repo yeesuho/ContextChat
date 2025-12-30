@@ -14,19 +14,20 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
+  // 메인 animation controller
   late AnimationController ac = AnimationController(
     vsync: this,
     duration: Duration(milliseconds: 3500),
   );
 
-  late AnimationController bounceController = AnimationController(vsync: this, duration: Duration(milliseconds: 600));
+  // next 버튼 bounce 애니메이션 controller
+  late AnimationController bounceController = AnimationController(vsync: this, duration: Duration(milliseconds: 300));
   // late CurvedAnimation animation = CurvedAnimation(
   //   parent: ac,
   //   curve: Curves.easeOutCirc,
   // );
   late Animation<double> logoRotationAnimation;
-  // late final Animation<double> handleIn = CurvedAnimation(parent: ac, curve: Interval(0.0, 0.4, curve: Curves.easeOut));
-  // late final Animation<double> arrowsIn = CurvedAnimation(parent: ac, curve: Interval(0.4, 0.8, curve: Curves.easeOut));
+
 
   late final Animation<double> sliderHandleAnimation;
   late final Animation<double> sliderBGAnimation;
@@ -54,9 +55,23 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
     // Future.delayed(Duration(seconds: 1), () {
     //   if(mounted) setState(() => showFullSlider = true);
     // });
-    Future.delayed(Duration(milliseconds: 2000), () {
-      if(mounted) bounceController.repeat(reverse: true);
+    Future.delayed(Duration(milliseconds: 2500), () {
+      if(mounted) _startBounceLoop();
     });
+  }
+
+  Future<void> _startBounceLoop() async {
+    while (mounted) {
+      try{
+        await bounceController.forward().orCancel;
+
+        await bounceController.reverse().orCancel;
+
+        await Future.delayed(Duration(milliseconds: 1000));
+      } on TickerCanceled {
+        break;
+      }
+    }
   }
 
   @override
