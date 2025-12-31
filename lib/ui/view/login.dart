@@ -1,4 +1,4 @@
-import 'package:context_chat/ui/style.dart';
+import 'package:connex_chat/ui/style.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {

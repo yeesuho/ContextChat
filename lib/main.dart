@@ -1,5 +1,5 @@
-import 'package:context_chat/ui/style.dart';
-import 'package:context_chat/ui/view/login.dart';
+import 'package:connex_chat/ui/style.dart';
+import 'package:connex_chat/ui/view/login.dart';
 import 'package:flutter/material.dart';
 
 import 'ui/view/home_page.dart';

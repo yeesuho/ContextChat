@@ -1,8 +1,8 @@
 import 'dart:math' as math;
 
-import 'package:context_chat/ui/style.dart';
-import 'package:context_chat/ui/view/home_page.dart';
-import 'package:context_chat/ui/view/login.dart';
+import 'package:connex_chat/ui/style.dart';
+import 'package:connex_chat/ui/view/home_page.dart';
+import 'package:connex_chat/ui/view/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
