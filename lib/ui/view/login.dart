@@ -1,3 +1,4 @@
+import 'package:connex_chat/main.dart';
 import 'package:connex_chat/ui/style.dart';
 import 'package:flutter/material.dart';
 
@@ -130,7 +131,11 @@ class _LoginPageState extends State<LoginPage> {
                                 SizedBox(
                                   width: MediaQuery.of(context).size.width,
                                   height: 60,
-                                  child: OutlinedButton(onPressed: (){}, style: OutlinedButton.styleFrom(
+                                  child: OutlinedButton(
+                                    onPressed: (){
+                                      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => MyApp(),), (route) => false,);
+                                    },
+                                    style: OutlinedButton.styleFrom(
                                     side: BorderSide(
                                       color: Style.theme.colorScheme.primary,
                                       width: 2
@@ -144,7 +149,20 @@ class _LoginPageState extends State<LoginPage> {
                                 SizedBox(
                                   width: MediaQuery.of(context).size.width,
                                   height: 60,
-                                  child: ElevatedButton(onPressed: (){}, style: ElevatedButton.styleFrom(
+                                  child: ElevatedButton(onPressed: (){
+                                    showDialog(
+                                      context: context,
+                                      barrierDismissible: false,
+                                      builder: (context) => AlertDialog(
+                                        content: Padding(padding: EdgeInsets.only(top: 20, left: 20), child: Text("기능을 준비 중 입니다!", style: TextStyle(color: Colors.black, fontSize: 16, fontFamily: "LexendDeca"))),
+                                        actions: [
+                                          TextButton(onPressed: (){
+                                            Navigator.of(context).pop();
+                                          }, child: Text("확인", style: TextStyle(fontWeight: FontWeight.bold, fontFamily: "LexendDeca"),))
+                                        ],
+                                      ),
+                                    );
+                                  }, style: ElevatedButton.styleFrom(
                                       backgroundColor: Style.theme.colorScheme.primary,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(14)
