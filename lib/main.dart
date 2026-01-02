@@ -1,13 +1,21 @@
+import 'dart:convert';
+
 import 'package:connex_chat/controller/app.dart';
+import 'package:connex_chat/data/model/employee.dart';
 import 'package:connex_chat/ui/style.dart';
 import 'package:connex_chat/ui/view/login.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'ui/view/home_page.dart';
 import 'ui/view/splash_page.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  App.employee = jsonDecode(await rootBundle.loadString("assets/data/사원_목록_data.json"))['employee'].map<Employee>((e) => Employee.fromJson(e)).toList();
+
   runApp(
       MaterialApp(
         debugShowCheckedModeBanner: false,
